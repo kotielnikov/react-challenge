@@ -6,27 +6,27 @@
 
 ### Form
 Autosave form. Form contains:
-- Name
+- name
 - surname 
 - role
 - email
 
-Data should be collected by form and displayed **live** in signature preview.
+Data should be collected by form and displayed **LIVE** in SignaturePreview.
 
-`api.js/saveUser({name: string, surname: string; role: string; email: string})` method can be use to save the form. 
+Use `api.js/saveUser({name: string, surname: string; role: string; email: string})` to save the form. 
 Save status needs to be displayed in the SnackBar component.
 `useSnackbarContext` hook should be used for this.
 
 `saveUser` API has a rate limit of 1 request per 5 seconds.
 
-## Preview component
+## `SignaturePreview` component
 
 ![Signature preview](public/signature-preview.png "Signature preview")
 
-The component should display data live from the form.
+The component should display data **LIVE** from the form.
 Additionally, it should show meta info which it can receive from API:
-- `api.ts/getOwners()` method can retrieve information about company owners. 
-- `api.ts/getAddress()` method can retrieve information about company address.
+- use `api.ts/getOwners()` to get company owners. 
+- use `api.ts/getAddress()` to get company addresses.
 
 Depending on the current date, the old or new address needs to be displayed. If the current date is after 01.08.2020, then the new address needs to be displayed; otherwise - the old one.
 ## Additionally:
