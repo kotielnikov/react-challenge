@@ -13,6 +13,19 @@ Data should be saved via `api.ts/saveUser()` call. Save status needs to be displ
 
 API has a rate limit of 1 request per 5 seconds.
 
+API Url: POST `/save_user` 
+Request type: {
+  name: string;
+  surname: string;
+  email: string;
+  role: string;
+}
+
+Response type: {
+  status: 'success' | 'error';
+  error?: string;
+}
+
 ### Preview
 
 Check the designs in attachments.
@@ -20,6 +33,24 @@ Check the designs in attachments.
 The preview displays dynamic data from Form.
 
 Additionally, it shows meta info which it needs to receive from API.
+
+API Url: GET `/addresses` 
+Response type: {
+  old: {
+    address: string,
+    postalCode: string,
+    city: string,
+  },
+  new: {
+    address: string,
+    postalCode: string,
+    city: string,
+  }
+}
+
+API Url: GET `/owners`
+Response type: string[]
+
 Information about company owners can be retrieved from `api.ts/getOwners()`.
 Information about company address can be retrieved from `api.ts/getAddress()`.
 

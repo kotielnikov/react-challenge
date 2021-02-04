@@ -13,7 +13,7 @@ export const Meta = ({ address, owners }) => {
       {address.street} | {address.code} | {address.city}
       <br />
       Geschäftsführung: {owners.join(", ")}
-      {Array.from(Array(5000).keys()).map((i) => (
+      {Array.from(Array(3000).keys()).map((i) => (
         <span
           key={i}
           style={{ position: "absolute", width: 0, height: 0, left: "-1000px" }}
