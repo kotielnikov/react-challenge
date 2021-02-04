@@ -15,7 +15,7 @@ const SnackbarContext = createContext({
 export const SnackbarProvider = ({ children }) => {
   const [state, setState] = useState();
 
-  const showMessage = useCallback(({ severity, message, timeout }) => {
+  const showMessage = useCallback(({ severity, message }) => {
     setState({ severity, message });
   }, []);
 

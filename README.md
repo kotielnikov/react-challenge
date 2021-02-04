@@ -1,45 +1,48 @@
 # Story: I want to edit my Email Signature
 
 ## Acceptance criteria:
-
-- Create form which collects and saves user data
+- Create a form that collects and saves user data
 - Extend preview to display data with a right layout
 
 ### Form
+Autosave form. Form contains:
+- Name
+- surname 
+- role
+- email
 
-Name, surname, role, email should be collected by form and displayed life in signature preview.
+Data should be collected by form and displayed **live** in signature preview.
 
-Data should be saved via `api.ts/saveUser()` call. Save status needs to be displayed in SnackBar component, `useSnackbarContext` can be used for this.
+`api.js/saveUser({name: string, surname: string; role: string; email: string})` method can be use to save the form. 
+Save status needs to be displayed in the SnackBar component.
+`useSnackbarContext` hook should be used for this.
 
-API has a rate limit of 1 request per 5 seconds.
+`saveUser` API has a rate limit of 1 request per 5 seconds.
 
-### Preview
-
-Check the designs in attachments.
-
-The preview displays dynamic data from Form.
-
-Additionally, it shows meta info which it needs to receive from API.
-Information about company owners can be retrieved from `api.ts/getOwners()`.
-Information about company address can be retrieved from `api.ts/getAddress()`.
-
-Depending on the current date the old or new address needs to be displayed.
-If the current date is after 01.08.2020 then the new address needs to be displayed, otherwise - the old one.
-
-## Additionally:
-
-1. Build reusable Form Management Component. Target API:
-
-```
-<Form initialValue={{ name: "", surname: "" }} onChange={saveData}>
-  <FormInput name="name" />
-  <FormInput name="surname" />
-</Form>
-```
-
-2. When needed SbackBar should be hidden after user-defined timeout (currently, it's displayed indefinitely)
-3. Improve page performance.
-
-## Attachments
+## Preview component
 
 ![Signature preview](public/signature-preview.png "Signature preview")
+
+The component should display data live from the form.
+Additionally, it should show meta info which it can receive from API:
+- `api.ts/getOwners()` method can retrieve information about company owners. 
+- `api.ts/getAddress()` method can retrieve information about company address.
+
+Depending on the current date, the old or new address needs to be displayed. If the current date is after 01.08.2020, then the new address needs to be displayed; otherwise - the old one.
+## Additionally:
+
+1. Build generic form component. Example of usage:
+
+```
+<Form initialValues={{ field1: "", field2: "" }} onChange={onChange}>
+  <FormInput name="field1" />
+  <FormInput name="field2" />
+</Form>
+```
+Use this generic component for Signature Form.
+
+2. Extend `SnackBar` the way it can be hidden after timeout (if defined).
+3. Improve page performance.
+
+
+
